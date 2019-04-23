@@ -1,0 +1,39 @@
+# This is a sample template that turns the Tom's Hardware Italia post on the left into a Telegram Instant View page
+# as shown on the right — in several simple steps. If you're unsure what some of the elements used here do,
+# check out the full documentation here: https://instantview.telegram.org/docs
+
+# First, we use Instant View version 2.1
+~version: "2.1"
+
+# We want to use this template only for blog article pages
+?exists: /html/head/meta[@name="article:section"]
+
+# Here we want to get article info and text
+body:             //div[has-class("generic_main_article")]
+title:            $body//h1[1]
+subtitle:         $title/next-sibling::h2
+published_date:   //time[has-class("item_short_desc_time")]
+author:           //div[has-class("article_author_name")]
+@remove: //div[has-class("item_readtime")] 
+
+# It is time to set the article cover image (needs fixing!)
+cover: //div[has-class("img_background")]/img
+cover: //img[has-class("img_background")]
+
+@map (//img) {
+    $img: $@
+    @set_attr(src, $img/@data-src): $img
+}
+
+# Convert all iframe elements to inline element
+@inline: //iframe[starts-with(@src, "/media/")]
+
+# Remove header and footer
+@remove: //article/header
+@remove: //article/footer
+
+# Replace p to figure
+@replace_tag(<figure>): $body//p[.//img]
+
+# Youtube Embedded Fix
+@replace_tag(<figure>): $body//p[.//iframe]
