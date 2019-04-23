@@ -2,11 +2,11 @@
 
 [![Chatroom icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/mniuop_bot) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 
-This is a sample template that turns a Tom's Hardware Italia post into a Telegram Instant View page.
+This is a sample [template](template.xpath) that turns a Tom's Hardware Italia post into a Telegram Instant View page.
 
 ## Deployment
 
-In order to test the template you just need to:
+In order to test the [template](template.xpath) you just need to:
 * Go to the [Instant View](https://instantview.telegram.org/) section in the Telegram website;
 * Log in with your Telegram account;
 * ???
